@@ -9,6 +9,7 @@ This image is based on the official Alpine Linux.
 Graphite, InfluxDB & OpenTSDB
 
 Port exported is : `3000`
+
 Volumes exported are : `/var/lib/grafana` and `/var/log/grafana`.
 
 ## Usage
@@ -21,12 +22,12 @@ Volumes exported are : `/var/lib/grafana` and `/var/log/grafana`.
 
 ## License
 
-See [LICENSE][] for the complete license.
+See [LICENSE](LICENSE) for the complete license.
 
 
 ## Changelog
 
-A [ChangeLog.md][] is available.
+A [ChangeLog.md](ChangeLog.md) is available.
 
 
 ## Contact
