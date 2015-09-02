@@ -14,18 +14,16 @@ RUN mkdir -p /go/src/github.com/grafana && cd /go/src/github.com/grafana && \
     git clone https://github.com/grafana/grafana.git -b ${GRAFANA_VERSION} && \
     cd grafana && \
     go run build.go setup && \
-    /go/bin/godep restore && \
-    go build . && \
+    go run build.go build && \
     npm install && \
     npm install -g grunt-cli && \
     grunt && \
     npm uninstall -g grunt-cli && \
     npm cache clear && \
     mkdir -p /usr/share/grafana/bin/ && \
-    cp -a /go/src/github.com/grafana/grafana/grafana /usr/share/grafana/bin/grafana-server && \
+    cp -a /go/src/github.com/grafana/grafana/bin/grafana-server /usr/share/grafana/bin/grafana-server && \
     cp -ra /go/src/github.com/grafana/grafana/public /usr/share/grafana && \
     cp -ra /go/src/github.com/grafana/grafana/conf /usr/share/grafana && \
-    go clean -i -r && \
     apk del --purge build-base nodejs go git mercurial && \
     rm -rf /go /tmp/* /var/cache/apk/* /root/.n*
 
