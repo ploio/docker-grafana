@@ -1,6 +1,10 @@
 ChangeLog
 ==============
 
+# Version 0.4.0 (09/03/2015)
+
+- Add Grafana 2.1.3
+
 # Version 0.3.0 (09/02/2015)
 
 - FIX Grafana 2.0 
