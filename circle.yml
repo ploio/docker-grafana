@@ -14,6 +14,7 @@ dependencies:
     - docker info
     - docker build -t portefaix/grafana:2.0 2.0
     - docker build -t portefaix/grafana:2.1 2.1
+    - docker build -t portefaix/grafana:2.5 2.5
 
 test:
   override:
@@ -21,6 +22,8 @@ test:
     - curl --retry 10 --retry-delay 5 -v http://localhost:9000
     - docker run -d -p 9001:3000 portefaix/grafana:2.1; sleep 90
     - curl --retry 10 --retry-delay 5 -v http://localhost:9001
+    - docker run -d -p 9002:3000 portefaix/grafana:2.5; sleep 90
+    - curl --retry 10 --retry-delay 5 -v http://localhost:9002
 
 #deployment:
 #  hub: 
