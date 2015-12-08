@@ -17,7 +17,7 @@ Graphite, InfluxDB & OpenTSDB
 
 Port exported is : `3000`
 
-Volumes exported are : `/var/lib/grafana` and `/var/log/grafana`.
+Volumes exported are : `/var/lib/grafana`, `/var/log/grafana` and `/etc/grafana`
 
 ## Usage
 
