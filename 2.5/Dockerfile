@@ -28,11 +28,11 @@ RUN mkdir -p /go/src/github.com/grafana && cd /go/src/github.com/grafana && \
     apk del --purge build-base nodejs go git mercurial && \
     rm -rf /go /tmp/* /var/cache/apk/* /root/.n*
 
-ADD grafana.ini /usr/share/grafana/conf/grafana.ini
+RUN mkdir /etc/grafana 
+ADD grafana.ini /etc/grafana/grafana.ini
 
-VOLUME ["/var/lib/grafana"]
-VOLUME ["/var/log/grafana"]
+VOLUME ["/var/lib/grafana", "/var/log/grafana", "/etc/grafana"]
 
 EXPOSE 3000
 
-CMD ["/usr/share/grafana/bin/grafana-server", "-config=/usr/share/grafana/conf/grafana.ini", "-homepath=/usr/share/grafana/"]
+CMD ["/usr/share/grafana/bin/grafana-server", "-config=/etc/grafana/grafana.ini", "-homepath=/usr/share/grafana/"]
