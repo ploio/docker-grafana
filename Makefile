@@ -42,7 +42,7 @@ build:
 .PHONY: run
 run:
 	@echo -e "$(OK_COLOR)[$(APP)] run $(NAMESPACE)/$(IMAGE):$(VERSION)$(NO_COLOR)"
-	@$(DOCKER) run --rm=true -p 9090:3000 $(NAMESPACE)/$(IMAGE):$(VERSION)
+	@$(DOCKER) run --rm=true -p 9090:3000 --name $(NAMESPACE)_$(IMAGE) $(NAMESPACE)/$(IMAGE):$(VERSION)
 
 .PHONY: login
 login:
