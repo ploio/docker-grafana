@@ -1,7 +1,7 @@
 ChangeLog
 ==============
 
-# Version 0.5.0 (12/08/2015)
+# Version 0.5.0 (12/17/2015)
 
 - Add Grafana 2.5.0
 
