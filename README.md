@@ -1,5 +1,12 @@
 # Portefaix Grafana
 
+* Master :
+[![Circle CI](https://circleci.com/gh/portefaix/docker-grafana/tree/master.svg?style=svg)](https://circleci.com/gh/portefaix/docker-grafana/tree/master)
+
+* Develop :
+[![Circle CI](https://circleci.com/gh/portefaix/docker-grafana/tree/develop.svg?style=svg)](https://circleci.com/gh/portefaix/docker-grafana/tree/develop)
+
+
 ![logo](http://pkgs.alpinelinux.org/assets/alpinelinux-logo.svg)
 
 [Alpine Linux][] is a Linux distribution built around musl libc and BusyBox.
@@ -10,7 +17,7 @@ Graphite, InfluxDB & OpenTSDB
 
 Port exported is : `3000`
 
-Volumes exported are : `/var/lib/grafana` and `/var/log/grafana`.
+Volumes exported are : `/var/lib/grafana`, `/var/log/grafana` and `/etc/grafana`
 
 ## Usage
 
@@ -18,7 +25,10 @@ Volumes exported are : `/var/lib/grafana` and `/var/log/grafana`.
 
 ## Supported tags
 
-- `2.0.2`
+- `2.0.2` [![](https://badge.imagelayers.io/portefaix/grafana:2.0.2.svg)](https://imagelayers.io/?images=portefaix/grafana:2.0.2 'imagelayers.io')
+- `2.1.3` [![](https://badge.imagelayers.io/portefaix/grafana:2.1.3.svg)](https://imagelayers.io/?images=portefaix/grafana:2.1.3 'imagelayers.io')
+- `2.5.0` [![](https://badge.imagelayers.io/portefaix/grafana:2.5.0.svg)](https://imagelayers.io/?images=portefaix/grafana:2.5.0 'imagelayers.io')
+
 
 ## License
 
