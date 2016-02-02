@@ -1,4 +1,4 @@
-# VERSION 2.0.2
+# VERSION 2.1.3
 # AUTHOR:         Nicolas Lamirault <nicolas.lamirault@gmail.com>
 # DESCRIPTION:    portefaix/grafana
 
