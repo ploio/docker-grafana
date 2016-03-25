@@ -2,7 +2,7 @@
 # AUTHOR:         Nicolas Lamirault <nicolas.lamirault@gmail.com>
 # DESCRIPTION:    portefaix/grafana
 
-FROM portefaix/base:3.2
+FROM portefaix/base:3.3
 MAINTAINER Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ENV GRAFANA_VERSION v2.5.0
