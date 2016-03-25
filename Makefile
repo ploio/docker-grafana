@@ -1,4 +1,4 @@
-# Copyright (C) 2015  Nicolas Lamirault <nicolas.lamirault@gmail.com>
+# Copyright (C) 2015, 2016  Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -33,6 +33,8 @@ help:
 	@echo -e "$(OK_COLOR)==== $(APP) ====$(NO_COLOR)"
 	@echo -e "$(WARN_COLOR)- build version=xx   : Make the Docker image"
 	@echo -e "$(WARN_COLOR)- publish version=xx : Publish the image"
+	@echo -e "$(WARN_COLOR)- run version=xx     : Run a container"
+	@echo -e "$(WARN_COLOR)- debug version=xx   : Launch a shell"
 
 .PHONY: build
 build:
@@ -43,6 +45,11 @@ build:
 run:
 	@echo -e "$(OK_COLOR)[$(APP)] run $(NAMESPACE)/$(IMAGE):$(VERSION)$(NO_COLOR)"
 	@$(DOCKER) run --rm=true -p 9090:3000 --name $(NAMESPACE)_$(IMAGE) $(NAMESPACE)/$(IMAGE):$(VERSION)
+
+.PHONY: debug
+debug:
+	@echo -e "$(OK_COLOR)[$(APP)] debug $(NAMESPACE)/$(IMAGE):$(VERSION)$(NO_COLOR)"
+	@$(DOCKER) run --rm=true -it -p 9090:3000 --name $(NAMESPACE)_$(IMAGE) $(NAMESPACE)/$(IMAGE):$(VERSION) /bin/bash
 
 .PHONY: login
 login:

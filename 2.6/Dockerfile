@@ -1,19 +1,21 @@
-# VERSION 2.1.3
+# VERSION 2.6.0
 # AUTHOR:         Nicolas Lamirault <nicolas.lamirault@gmail.com>
 # DESCRIPTION:    portefaix/grafana
 
-FROM portefaix/base:3.2
+FROM portefaix/base:3.3
 MAINTAINER Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
-ENV GRAFANA_VERSION v2.1.3
+ENV GRAFANA_VERSION v2.6.0
 ENV GOPATH /go
 
 RUN apk add --update build-base go nodejs git mercurial
-
+ADD package.json /tmp/package.json
 RUN mkdir -p /go/src/github.com/grafana && cd /go/src/github.com/grafana && \
     git clone https://github.com/grafana/grafana.git -b ${GRAFANA_VERSION} && \
     cd grafana && \
+    cp /tmp/package.json /go/src/github.com/grafana/grafana/package.json && \
     go run build.go setup && \
+    /go/bin/godep restore && \
     go run build.go build && \
     npm install && \
     npm install -g grunt-cli && \
@@ -22,16 +24,17 @@ RUN mkdir -p /go/src/github.com/grafana && cd /go/src/github.com/grafana && \
     npm cache clear && \
     mkdir -p /usr/share/grafana/bin/ && \
     cp -a /go/src/github.com/grafana/grafana/bin/grafana-server /usr/share/grafana/bin/grafana-server && \
-    cp -ra /go/src/github.com/grafana/grafana/public /usr/share/grafana && \
+    cp -ra /go/src/github.com/grafana/grafana/public_gen /usr/share/grafana && \
+    mv /usr/share/grafana/public_gen /usr/share/grafana/public && \
     cp -ra /go/src/github.com/grafana/grafana/conf /usr/share/grafana && \
     apk del --purge build-base nodejs go git mercurial && \
     rm -rf /go /tmp/* /var/cache/apk/* /root/.n*
 
-ADD grafana.ini /usr/share/grafana/conf/grafana.ini
+RUN mkdir /etc/grafana
+ADD grafana.ini /etc/grafana/grafana.ini
 
-VOLUME ["/var/lib/grafana"]
-VOLUME ["/var/log/grafana"]
+VOLUME ["/var/lib/grafana", "/var/log/grafana", "/etc/grafana"]
 
 EXPOSE 3000
 
-CMD ["/usr/share/grafana/bin/grafana-server", "-config=/usr/share/grafana/conf/grafana.ini", "-homepath=/usr/share/grafana/"]
+CMD ["/usr/share/grafana/bin/grafana-server", "-config=/etc/grafana/grafana.ini", "-homepath=/usr/share/grafana/"]

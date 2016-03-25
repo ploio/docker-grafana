@@ -2,21 +2,24 @@
 # AUTHOR:         Nicolas Lamirault <nicolas.lamirault@gmail.com>
 # DESCRIPTION:    portefaix/grafana
 
-FROM portefaix/base:3.2
+FROM portefaix/base:3.3
 MAINTAINER Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
 ENV GRAFANA_VERSION v2.5.0
 ENV GOPATH /go
 
 RUN apk add --update build-base go nodejs git mercurial
-
+ADD package.json /tmp/package.json
 RUN mkdir -p /go/src/github.com/grafana && cd /go/src/github.com/grafana && \
     git clone https://github.com/grafana/grafana.git -b ${GRAFANA_VERSION} && \
     cd grafana && \
+    cp /tmp/package.json /go/src/github.com/grafana/grafana/package.json && \
     go run build.go setup && \
     go run build.go build && \
     npm install && \
     npm install -g grunt-cli && \
+    mkdir node_modules/karma-phantomjs-launcher/node_modules && \
+    cp -r node_modules/phantomjs/ node_modules/karma-phantomjs-launcher/node_modules/ && \
     grunt && \
     npm uninstall -g grunt-cli && \
     npm cache clear && \
