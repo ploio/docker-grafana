@@ -18,6 +18,8 @@ RUN mkdir -p /go/src/github.com/grafana && cd /go/src/github.com/grafana && \
     go run build.go build && \
     npm install && \
     npm install -g grunt-cli && \
+    mkdir node_modules/karma-phantomjs-launcher/node_modules && \
+    cp -r node_modules/phantomjs/ node_modules/karma-phantomjs-launcher/node_modules/ && \
     grunt && \
     npm uninstall -g grunt-cli && \
     npm cache clear && \
