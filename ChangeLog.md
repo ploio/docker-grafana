@@ -3,6 +3,7 @@ ChangeLog
 
 # Version 1.0.0 (03/25/2016)
 
+- FIX Grafana 2.5 build
 - Add Grafana 2.6.0
 - Update to Alpine Linux 3.3
 
