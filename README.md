@@ -27,6 +27,7 @@ Volumes exported are : `/var/lib/grafana`, `/var/log/grafana` and `/etc/grafana`
 - `2.0.2` [![](https://badge.imagelayers.io/portefaix/grafana:2.0.2.svg)](https://imagelayers.io/?images=portefaix/grafana:2.0.2 'imagelayers.io')
 - `2.1.3` [![](https://badge.imagelayers.io/portefaix/grafana:2.1.3.svg)](https://imagelayers.io/?images=portefaix/grafana:2.1.3 'imagelayers.io')
 - `2.5.0` [![](https://badge.imagelayers.io/portefaix/grafana:2.5.0.svg)](https://imagelayers.io/?images=portefaix/grafana:2.5.0 'imagelayers.io')
+- `2.6.0` [![](https://badge.imagelayers.io/portefaix/grafana:2.6.0.svg)](https://imagelayers.io/?images=portefaix/grafana:2.6.0 'imagelayers.io')
 
 
 ## License
