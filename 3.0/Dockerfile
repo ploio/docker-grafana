@@ -1,11 +1,11 @@
-# VERSION 3.0.0-beta2
+# VERSION 3.0.4
 # AUTHOR:         Nicolas Lamirault <nicolas.lamirault@gmail.com>
 # DESCRIPTION:    portefaix/grafana
 
-FROM portefaix/base:3.3
+FROM portefaix/base:3.4
 MAINTAINER Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
-ENV GRAFANA_VERSION v3.0.0-beta2
+ENV GRAFANA_VERSION v3.0.4
 
 ENV GOPATH /go
 ENV GLIBC_VERSION=2.23-r1
@@ -15,9 +15,9 @@ WORKDIR /tmp
 RUN apk add --update curl openssl \
     && curl -Ls https://github.com/andyshinn/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/${GLIBC_FILE} > /tmp/${GLIBC_FILE} \
     && apk add --allow-untrusted /tmp/${GLIBC_FILE} \
-    && curl -Ls  http://grafanarel.s3.amazonaws.com/builds/grafana-3.0.0-beta21459801392.linux-x64.tar.gz > /tmp/grafana.tar.gz \
+    && curl -Ls  http://grafanarel.s3.amazonaws.com/builds/grafana-3.0.4-1464167696.linux-x64.tar.gz > /tmp/grafana.tar.gz \
     && tar xvfz /tmp/grafana.tar.gz \
-    && mv /tmp/grafana-3.0.0-beta21459801392 /usr/share/grafana \
+    && mv /tmp/grafana-3.0.4-1464167696 /usr/share/grafana \
     && rm /tmp/grafana.tar.gz \
     && apk del curl \
     && rm -rf /tmp/* /var/cache/apk/*
